@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="brand">مصممون الخليج — الرئيسية</title>
+
+  <meta name="color-scheme" content="light dark" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- الترجمة + تطبيق الشريط -->
+  <script defer src="./i18n.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body class="rtl app-body" data-page="home">
+  <!-- الشريط العلوي يُحقن هنا -->
+  <header id="topbar"></header>
+
+  <main class="container home">
+    <h1 class="visually-hidden" data-i18n="brand">مصممون الخليج</h1>
+
+    <section class="btn-grid">
+      <a class="tile" href="in.html"     data-i18n="in">دخول</a>
+      <a class="tile" href="out.html"    data-i18n="out">خروج</a>
+      <a class="tile" href="stock.html"  data-i18n="stock">المخزون</a>
+      <a class="tile" href="logs.html"   data-i18n="logs">السجل</a>
+      <a class="tile" href="models.html" data-i18n="models">الموديلات</a> <!-- لاحظ ./ بدل / -->
+    </section>
+  </main>
+
+  <!-- تشغيل الشريط والترجمة للصفحة دي -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try { renderTopbar('home'); wireTopbar('home'); } catch {}
+      try { applyStaticTexts?.(document); } catch {}
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stock</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="rtl" data-page="stock">
+ <header id="topbar"></header>
+
+  <main class="container">
+    <div class="card">
+  <h2 class="title" data-i18n="stock">المخزن</h2>
+
+  <input id="search" class="input" placeholder="بحث بالعنصر/الكود..." style="margin-bottom:12px">
+
+  <!-- فلاتر بشكل أكورديون -->
+  <div class="filters">
+    <details class="acc" id="accCategory">
+      <summary><span data-i18n="category">الصنف</span><small id="catBadge" class="sel-badge" hidden></small></summary>
+      <div class="acc-body" id="filterCategory"></div>
+    </details>
+
+    <details class="acc" id="accFabric">
+      <summary><span data-i18n="fabric">القماش</span><small id="fabBadge" class="sel-badge" hidden></small></summary>
+      <div class="acc-body" id="filterFabric"></div>
+    </details>
+
+    <details class="acc" id="accSize">
+      <summary><span data-i18n="size">المقاس</span><small id="sizeBadge" class="sel-badge" hidden></small></summary>
+      <div class="acc-body" id="filterSize"></div>
+    </details>
+  </div>
+
+  <div id="stockList" style="margin-top:8px"></div>
+</div>
+
+  </main>
+
+  <script src="i18n.js"></script>
+  <script>
+    // ضبط نص placeholder حسب اللغة قبل app.js
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('search').placeholder = I18N[getLang()].search;
+    });
+  </script>
+  <script>
+(function(){
+  // مخزن ترجمات الصفحة (لا تُعيد تعريفه لو موجود)
+  window.I18N_HOME = window.I18N_HOME || {
+    ar:{
+      home_title:"الصفحة الرئيسية",
+      home_intro:"اختر ما تريد: بدء إدارة المخزن أو استعراض الخيارات المتاحة.",
+      btn1:"تسجيل دخول", btn2:"تسجيل خروج", btn3:"المخزن", btn4:"السجل", btn5:"عرض الموديلات"
+    },
+    en:{
+      home_title:"Home",
+      home_intro:"Choose an action: start managing inventory or explore options.",
+      btn1:"Inbound", btn2:"Outbound", btn3:"Stock", btn4:"Logs", btn5:"View Models"
+    }
+  };
+
+  const getLang = ()=> localStorage.getItem('lang') || 'ar';
+  const tHome   = k => (window.I18N_HOME[getLang()]||{})[k] || k;
+
+  function applyI18nHome(){
+    // قيّد الترجمة على محتوى الصفحة فقط
+    const scope = document.querySelector('main') || document;
+    scope.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.dataset.i18n;
+      if (k) el.textContent = tHome(k);
+    });
+    document.title = tHome('home_title');
+  }
+  window.applyI18nHome = applyI18nHome;
+
+  // أول تحميل
+  document.addEventListener('DOMContentLoaded', ()=>{
+    applyI18nHome();
+    patchInOutLabels();
+  });
+
+  // لما تتغير اللغة من زر الهيدر (site-header.js بيبعت الحدث ده)
+  document.addEventListener('lang:changed', ()=>{
+    applyI18nHome();
+    patchInOutLabels();
+  });
+
+  // (اختياري) تغيير نصوص in/out إلى “تسجيل بيانات / خروج بيانات”
+  window.patchInOutLabels = function(){
+    const lang = getLang();
+    const inEl  = document.querySelector('a[href="in.html"]');
+    const outEl = document.querySelector('a[href="out.html"]');
+    if (!inEl || !outEl) return;
+    if (lang === 'ar'){
+      inEl.textContent  = 'تسجيل بيانات';
+      outEl.textContent = 'خروج بيانات';
+    } else {
+      inEl.textContent  = 'Inbound Data';
+      outEl.textContent = 'Outbound Data';
+    }
+  };
+})();
+</script>
+   <script defer src="i18n.js"></script>
+<script defer src="app.js"></script>
+
+   
+</body>
+</html>

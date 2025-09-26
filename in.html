@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IN</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="rtl" data-page="in">
+ <header id="topbar"></header>
+
+  <main class="container">
+   <!-- الحقول الرئيسية صفين -->
+<div class="form-grid">
+ <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:center">
+        <h2 id="formTitle" data-i18n="form_out">تسجيل خروج</h2>
+        <span id="modeBadge" class="badge out" data-i18n="badge_out">OUT</span>
+      </div>
+
+      <div class="grid form-2">
+        <div>
+          <label class="label" data-i18n="code">العنصر الرئيسي</label>
+          <input id="code" class="input">
+        </div>
+        <div>
+          <label class="label" data-i18n="qty">الكمية</label>
+          <input id="qty" type="number" min="1" class="input" placeholder="0">
+        </div>
+
+        <div>
+          <div class="label" data-i18n="sizeType">نوع المقاس</div>
+          <div class="row">
+            <label class="btn"><input type="radio" name="sizeType" value="num" checked> <span data-i18n="sizeNum">أرقام</span></label>
+            <label class="btn"><input type="radio" name="sizeType" value="alpha"> <span data-i18n="sizeAlpha">حروف</span></label>
+          </div>
+        </div>
+
+      
+        <div id="sizeFieldAlpha" style="display:none">
+          <label class="label" data-i18n="sizeAlpha">المقاس (حروف)</label>
+          <select id="sizeAlpha" class="input"></select>
+        </div>
+
+        <div>
+          <label class="label" data-i18n="category">الصنف</label>
+          <select id="category" class="input"></select>
+        </div>
+        <div>
+          <label class="label" data-i18n="fabric">القماش</label>
+          <select id="fabric" class="input"></select>
+        </div>
+      </div>
+      <div>
+           <label class="label">Color</label>
+             <select id="color" class="input"></select>
+             </div>
+             <div id="sizeFieldNum">
+          <label class="label" data-i18n="sizeNum">المقاس (أرقام)</label>
+          <select id="sizeNum" class="input"></select>
+        </div>
+
+      <div class="row" style="margin-top:12px">
+        <button id="submitBtn" class="btn btn-secondary" data-i18n="do">تنفيذ العملية</button>
+        <button id="resetBtn" class="btn" data-i18n="clear">تفريغ الحقول</button>
+      </div>
+
+  
+
+    </div>
+
+
+  </main>
+ 
+
+  <!-- الترجمة ثم التطبيق -->
+   <script defer src="i18n.js"></script>
+<script defer src="app.js"></script>
+
+ 
+</body>
+</html>

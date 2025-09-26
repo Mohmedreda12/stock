@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Logs</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="rtl" data-page="logs">
+ <header id="topbar"></header>
+
+  <main class="container">
+    <div class="card">
+      <div class="row" style="justify-content:space-between; align-items:center">
+        <h2 data-i18n="logTitle">سجل العمليات</h2>
+        <button id="clearLogs" class="btn btn-danger" data-i18n="clearLogs">مسح السجل</button>
+      </div>
+      <div style="overflow:auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th data-i18n="table_time">الوقت</th>
+              <th data-i18n="table_action">العملية</th>
+              <th data-i18n="table_item">العنصر</th>
+              <th data-i18n="size">المقاس</th>
+              <th data-i18n="category">الصنف</th>
+              <th data-i18n="fabric">القماش</th>
+              <th data-i18n="color">اللون</th>
+              <th data-i18n="qty">الكمية</th>
+               
+            </tr>
+          </thead>
+          <tbody id="logsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+   <script defer src="i18n.js"></script>
+<script defer src="app.js"></script>
+
+</body>
+</html>

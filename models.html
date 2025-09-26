@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title data-i18n="models_title">عرض الموديلات</title>
+
+  <!-- ستايل الموقع الموحد -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- الترجمة + تطبيق الشريط -->
+  <script defer src="i18n.js"></script>
+  <script defer src="app.js"></script>
+
+  <!-- سكربت صفحة الموديلات فقط -->
+  <script defer src="models.js"></script>
+</head>
+
+<body class="rtl app-body" data-page="models">
+  <!-- يرسم فيه التوب بار -->
+  <header id="topbar"></header>
+
+  <main class="container">
+    <div class="toolbar">
+      <input id="q" class="input search" placeholder="ابحث بالعنوان…" data-i18n="models_search" />
+      <button id="addBtn" class="btn btn-primary" data-i18n="models_add">إضافة موديل</button>
+    </div>
+
+    <div id="grid" class="grid"></div>
+
+    <div id="empty" class="empty" hidden data-i18n="models_empty">
+      لا توجد موديلات بعد. اضغط “إضافة موديل”.
+    </div>
+  </main>
+
+  <!-- Dialog: إضافة/تعديل -->
+  <dialog id="editDlg">
+    <form method="dialog" class="dlg-body" id="editForm">
+      <h3 class="dialog-title" style="margin:12px 0 6px; text-align:center; font-weight:800" data-i18n="models_add_edit">
+        إضافة / تعديل موديل
+      </h3>
+
+      <div class="field">
+        <label for="file" data-i18n="models_image">الصورة</label>
+        <div id="drop" class="file-drop" data-i18n="models_pick">اسحب الصورة هنا أو اضغط للاختيار</div>
+        <input id="file" type="file" accept="image/*" hidden />
+        <div id="prev" class="preview" hidden></div>
+      </div>
+
+      <div class="field">
+        <label for="caption" data-i18n="models_caption">التعليق (اختياري)</label>
+        <input id="caption" class="input" placeholder="مثلاً: قميص كحلي مقاس L" />
+      </div>
+
+      <div class="dlg-actions">
+        <button class="btn" value="cancel" data-i18n="cancel">إلغاء</button>
+        <button id="saveBtn" class="btn btn-primary" value="ok" data-i18n="save">حفظ</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Dialog: عارض الصورة -->
+  <dialog id="viewer" class="viewer">
+    <div class="img-wrap"><img id="viewerImg" alt=""></div>
+    <div class="cap" id="viewerCap"></div>
+  </dialog>
+
+  <!-- قائمة الضغط المطوّل (برّه أي dialog) -->
+  <div id="ctx" class="context" hidden>
+    <div class="box">
+      <button id="ctxEdit" data-i18n="edit">تعديل</button>
+      <button id="ctxDelete" class="danger" data-i18n="delete">حذف</button>
+      <button id="ctxCancel" data-i18n="cancel">إلغاء</button>
+    </div>
+  </div>
+
+  <!-- تشغيل التوب بار + الترجمة للصفحة -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try { renderTopbar('models'); wireTopbar('models'); } catch {}
+      try { applyStaticTexts?.(document); } catch {}
+    });
+  </script>
+</body>
+</html>

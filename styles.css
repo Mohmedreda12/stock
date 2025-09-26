@@ -400,60 +400,51 @@ dialog::backdrop{ background:rgba(0,0,0,.45); }
 }
 .context .box button:hover{ background:rgba(255,255,255,.06); }
 .context .box .danger{ color:#ef4444; }
+ 
 
 
 
-.login-box {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 25px;
-  border-radius: 12px;
-  width: 300px;
-  margin: 60px auto;
-  text-align: center;
+
+
+/* نزّل عنوان النموذج لتحت شوية في in.html و out.html */
+#formTitle{
+  margin-top: 24px;          /* زوّد/قلّل الرقم على مزاجك */
+  display: inline-block;
 }
 
-.login-box h2 {
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-.form-group label {
-  color: #fff;
-  margin-bottom: 5px;
-  font-size: 14px;
-}
-
-.input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
-  font-size: 14px;
-}
-
-.btn-primary {
-  background: #4a90e2;
-  color: white;
-  padding: 10px 20px;
+/* خلّي شارة IN/OUT نقطة ملوّنة بدون نص */
+#modeBadge.badge{
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 999px;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 15px;
+  display: inline-block;
+  line-height: 0;
+  font-size: 0;              /* يخفي كلمة IN/OUT */
+  vertical-align: middle;
+  margin-inline-start: 8px;  /* مسافة بسيطة عن العنوان */
 }
 
-.btn-primary:hover {
-  background: #357abd;
+/* الألوان موجودة أصلاً في .in و .out وهنستفيد منها */
+
+
+/* تحريك عنوان النموذج والشارة لتحت */
+#formTitle {
+  margin-top: 40px; /* زوّد أو قلّل الرقم حسب اللي يناسبك */
+  display: inline-block;
 }
 
-.error-msg {
-  color: #ff4d4d;
-  font-size: 14px;
-  margin-top: 10px;
+/* ضبط مكان الشارة بالنسبة للعنوان */
+#modeBadge.badge {
+  margin-top: 40px; /* نفس المسافة عشان ينزل مع العنوان */
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  display: inline-block;
+  font-size: 0; /* يخفي النص */
+  vertical-align: middle;
+  margin-inline-start: 10px;
 }

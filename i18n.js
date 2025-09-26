@@ -45,8 +45,8 @@ const I18N = {
     table_item: "العنصر",
 
     /* نماذج الإدخال والإخراج */
-    form_in: "تسجيل دخول",
-    form_out: "تسجيل خروج",
+    form_in:"إدخال",
+    form_out: "إخراج",
     badge_in: "IN",
     badge_out: "OUT",
 
